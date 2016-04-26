@@ -10,20 +10,19 @@ import univ.rouen.model.STBList;
 public class STBController {
 
     private STBList stbList = new STBList();
-    @RequestMapping(value = "resume/id/{name:.+}", method = RequestMethod.GET )
+
+    @RequestMapping(value = "accueil", method = RequestMethod.GET )
     @ResponseBody
-    public STB getSTBAction(@PathVariable("name") String name) {
-        STB stb = new STB();
-        stb.setTitle(name);
+    public String getAccueilAction() {
 
-        String format = "dd/MM/yy H:mm:ss";
+        return "Crochemore Valentin, Fleury Yoann. Nombre de STB stockées : " + stbList.getList().size();
+    }
 
-        java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-        java.util.Date date = new java.util.Date();
-
-        stb.setDate(formater.format( date ) );
-
-        return stb;
+    @RequestMapping(value = "resume/{id}", method = RequestMethod.GET )
+    @ResponseBody
+    public STB getSTBAction(@PathVariable("id") int id) {
+        //TODO search stb with the id in param and return it
+        return null;
     }
 
     @RequestMapping(value = "resume", method = RequestMethod.GET )
