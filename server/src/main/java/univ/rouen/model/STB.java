@@ -5,13 +5,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by valentin on 4/18/16.
- */
+
 @XmlRootElement(name = "STB")
 @XmlAccessorType(XmlAccessType.NONE)
 public class STB implements Serializable{
+
+    private static int STB_ID = 0;
+
+    @XmlElement
+    private int id;
 
     @XmlElement
     private String title;
@@ -24,6 +29,34 @@ public class STB implements Serializable{
 
     @XmlElement
     private String description;
+
+    @XmlElement
+    private List<Equipe> equipeList;
+
+    @XmlElement
+    private List<Client> clientList;
+
+    @XmlElement
+    private List<Fonctionnalite> fonctionnaliteList;
+
+    @XmlElement
+    private String commentaire;
+
+    public STB() {
+        this.equipeList = new ArrayList<Equipe>();
+        this.clientList = new ArrayList<Client>();
+        this.fonctionnaliteList = new ArrayList<Fonctionnalite>();
+        this.id = STB_ID;
+        STB_ID++;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -55,5 +88,45 @@ public class STB implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public static int getStbId() {
+        return STB_ID;
+    }
+
+    public static void setStbId(int stbId) {
+        STB_ID = stbId;
+    }
+
+    public List<Equipe> getEquipeList() {
+        return equipeList;
+    }
+
+    public void setEquipeList(List<Equipe> equipeList) {
+        this.equipeList = equipeList;
+    }
+
+    public List<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(List<Client> clientList) {
+        this.clientList = clientList;
+    }
+
+    public List<Fonctionnalite> getFonctionnaliteList() {
+        return fonctionnaliteList;
+    }
+
+    public void setFonctionnaliteList(List<Fonctionnalite> fonctionnaliteList) {
+        this.fonctionnaliteList = fonctionnaliteList;
+    }
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 }

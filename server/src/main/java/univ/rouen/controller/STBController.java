@@ -21,7 +21,11 @@ public class STBController {
     @RequestMapping(value = "resume/{id}", method = RequestMethod.GET )
     @ResponseBody
     public STB getSTBAction(@PathVariable("id") int id) {
-        //TODO search stb with the id in param and return it
+        for(STB stb : stbList.getList()) {
+            if (stb.getId() == id) {
+                return stb;
+            }
+        }
         return null;
     }
 
