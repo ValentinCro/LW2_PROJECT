@@ -32,35 +32,6 @@ public class STBController {
     @RequestMapping(value = "resume", method = RequestMethod.GET )
     @ResponseBody
     public STBList getAllSTBAction() {
-        STB stb = new STB();
-        stb.setTitle("test");
-
-        String format = "dd/MM/yy H:mm:ss";
-
-        java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
-        java.util.Date date = new java.util.Date();
-
-        stb.setDate(formater.format( date ) );
-
-        this.stbList.addElement(stb);
-
-        stb = new STB();
-        stb.setTitle("test2");
-
-        date = new java.util.Date();
-
-        stb.setDate(formater.format( date ) );
-
-        this.stbList.addElement(stb);
-
-        stb = new STB();
-        stb.setTitle("test3");
-
-        date = new java.util.Date();
-
-        stb.setDate(formater.format( date ) );
-
-        this.stbList.addElement(stb);
 
         return stbList;
     }
@@ -70,7 +41,7 @@ public class STBController {
     @ResponseBody
     public STBList newSTBAction(@RequestBody STB stb) {
         this.stbList.addElement(stb);
-
+        
         return stbList;
     }
 }
